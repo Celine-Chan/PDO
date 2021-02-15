@@ -12,7 +12,7 @@ class Clients extends DataBase
     {
         //utilisation de magic quote pour indiquer qu'il s'agit de champs et de table
         //on stock la requête dans une variable
-        $query = 'SELECT `id`, `lastName`, `firstName` FROM `clients`';
+        $query = 'SELECT `id`, `lastName`, `firstName`, `card` FROM `clients` WHERE `card` = 1 LIMIT 20';
 
         //on utilise la méthode query pour exécuter notre requête
         $queryObject = $this->dataBase->query($query);

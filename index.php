@@ -16,7 +16,9 @@ require_once 'controllers/index_controller.php';
 
 <body>
 
-    <h1 class="text-center mb-5">Affichage des données clients</h1>
+    <h1 class="text-center mb-5">Affichage des données</h1>
+
+    <h2 class="text-center mb-5">Clients</h2>
 
     <table class="table table-striped table-dark container text-center">
         <thead>
@@ -24,18 +26,40 @@ require_once 'controllers/index_controller.php';
                 <th scope="col">ID</th>
                 <th scope="col">NOM</th>
                 <th scope="col">Prénom</th>
+                <th scope="col">Carte de fidélité</th>
             </tr>
         </thead>
 
         <tbody>
-        <!-- je fais un foreach pour parcourir le tableau -->
+            <!-- je fais un foreach pour parcourir le tableau -->
             <?php foreach ($allClientsArray as $clients) { ?>
                 <tr>
                     <td><?= $clients['id'] ?></td>
                     <td><?= $clients['lastName'] ?></td>
                     <td><?= $clients['firstName'] ?></td>
+                    <td><?= $clients['card'] ?></td>
                 </tr>
             <?php } ?>
+        </tbody>
+    </table>
+
+    <h2 class="text-center mb-5 mt-5">Types de spectacles</h2>
+
+    <table class="table table-striped container text-center">
+        <thead>
+            <tr>
+                <th scope="col">ID</th>
+                <th scope="col">Type</th>
+            </tr>
+        </thead>
+
+        <tbody>
+                <?php foreach ($showTypesArray as $types) { ?>
+                <tr>
+                    <td><?= $types['id'] ?></td>
+                    <td><?= $types['type'] ?></td>
+                </tr>
+                <?php } ?>
         </tbody>
     </table>
 
