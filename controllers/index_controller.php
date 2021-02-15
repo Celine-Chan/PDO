@@ -1,18 +1,16 @@
 <?php
 
-// require_once 'models/clients.php';
 require_once 'models/database.php';
+require_once 'models/clients.php';
 
-$test = new DataBase;
+//j'instancie un  nouvel objet avec la classe clients
+$clientsObject = new Clients;
 
-var_dump($test);
+//utilisation d ela méthode getAllClients me permettant de récupérer tous les clients sous forme de tableau
+$allClientsArray = $clientsObject->getAllClients();
+
+// var_dump($allClientsArray);
 
 
-// $bdd = new PDO('mysql:host=localhost;dbname=colyseum;charset=utf8', 'pdo', 'pdo');
 
-// $showClient = $bdd->query('SELECT * FROM clients');
-
-// while ($clientsArray = $showClient->fetch()) {
-//     echo $clientsArray['lastName'] . ' ' . $clientsArray['firstName'] . ' ' . $clientsArray['birthDate'] . ' ' . $clientsArray['card'] . '</br>';
-// }
 

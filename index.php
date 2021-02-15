@@ -16,18 +16,28 @@ require_once 'controllers/index_controller.php';
 
 <body>
 
-    <h1>Affichage des données clients</h1>
+    <h1 class="text-center mb-5">Affichage des données clients</h1>
 
-    <!-- <table class="table">
+    <table class="table table-striped table-dark container text-center">
         <thead>
-        </thead>
-        <tbody>
             <tr>
+                <th scope="col">ID</th>
+                <th scope="col">NOM</th>
+                <th scope="col">Prénom</th>
             </tr>
+        </thead>
+
+        <tbody>
+        <!-- je fais un foreach pour parcourir le tableau -->
+            <?php foreach ($allClientsArray as $clients) { ?>
+                <tr>
+                    <td><?= $clients['id'] ?></td>
+                    <td><?= $clients['lastName'] ?></td>
+                    <td><?= $clients['firstName'] ?></td>
+                </tr>
+            <?php } ?>
         </tbody>
     </table>
-
-    <a class="btn btn-primary" href="#" role="button">Clients</a> -->
 
 
 
