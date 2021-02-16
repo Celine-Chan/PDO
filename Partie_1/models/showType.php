@@ -3,7 +3,7 @@
 class ShowTypes extends DataBase
 {
     /**
-     * @return 
+     * @return array
      */
     public function getShowTypes()
     {

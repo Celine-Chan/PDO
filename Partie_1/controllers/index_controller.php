@@ -3,6 +3,7 @@
 require_once 'models/database.php';
 require_once 'models/clients.php';
 require_once 'models/showType.php';
+require_once 'models/shows.php';
 
 //j'instancie un  nouvel objet avec la classe clients
 $clientsObject = new Clients;
@@ -12,7 +13,23 @@ $allClientsArray = $clientsObject->getAllClients();
 
 // var_dump($allClientsArray);
 
+//ex 2
 $showTypesObject = new ShowTypes;
 $showTypesArray = $showTypesObject->getShowTypes();
 
+//ex 3
+$showFirstClientsArray = $clientsObject->showFirstClients();
+
+//ex 4
+$showCardArray = $clientsObject->showCard();
+
+//ex 5
+$showFirstLetterArray = $clientsObject->showFirstLetter();
+
+//ex 6
+$showsObject = new Shows;
+$showShowsArray = $showsObject->showShows();
+
+//ex 7
+$showClientsArray = $clientsObject->showClients();
 
