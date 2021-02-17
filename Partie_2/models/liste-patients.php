@@ -20,6 +20,8 @@ class Patients extends DataBase
 </head>
 <body>
 
+<h1 class="text-center mb-5">Listes des patients</h1>
+
 <a class="btn btn-primary" href="ajout-patients.php" role="button">Création patients</a>
 
     

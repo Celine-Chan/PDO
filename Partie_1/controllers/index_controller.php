@@ -24,7 +24,7 @@ $showFirstClientsArray = $clientsObject->showFirstClients(20);
 $showCardArray = $clientsObject->showCard(1);
 
 //ex 5
-$showFirstLetterArray = $clientsObject->showFirstLetter();
+$showFirstLetterArray = $clientsObject->showFirstLetter('m');
 
 //ex 6
 $showsObject = new Shows;

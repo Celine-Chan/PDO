@@ -16,8 +16,8 @@ require_once 'controllers/index_controller.php';
 
 <body>
 
-<div class="row">
-</div>
+    <div class="row">
+    </div>
 
     <h1 class="text-center mb-5">Affichage des données</h1>
 
@@ -55,12 +55,12 @@ require_once 'controllers/index_controller.php';
         </thead>
 
         <tbody>
-                <?php foreach ($showTypesArray as $types) { ?>
+            <?php foreach ($showTypesArray as $types) { ?>
                 <tr>
                     <td><?= $types['id'] ?></td>
                     <td><?= $types['type'] ?></td>
                 </tr>
-                <?php } ?>
+            <?php } ?>
         </tbody>
     </table>
 
@@ -143,7 +143,7 @@ require_once 'controllers/index_controller.php';
         <thead>
             <tr>
                 <th scope="col">ID</th>
-                <th scope="col">Titre</th>
+                <th scope="col">Titre du spectacle</th>
                 <th scope="col">Artiste</th>
                 <th scope="col">Date</th>
                 <th scope="col">Heure</th>
@@ -186,8 +186,10 @@ require_once 'controllers/index_controller.php';
                     <td><?= $clients['lastName'] ?></td>
                     <td><?= $clients['firstName'] ?></td>
                     <td><?= $clients['birthDate'] ?></td>
-                    <td><?= $clients['card'] ?></td>
-                    <td><?= $clients['cardNumber'] ?></td>
+                    <td><?= $clients['card'] == 1 ? 'oui' : 'non' ?></td>
+                    <?php if ($clients['card'] == 1) { ?>
+                        <td><?= $clients['cardNumber'] ?></td>
+                    <?php } ?>
                 </tr>
             <?php } ?>
         </tbody>

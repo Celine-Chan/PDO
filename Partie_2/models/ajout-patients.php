@@ -17,7 +17,7 @@
 
     <h1 class="text-center mb-5">Création fichier patient</h1>
 
-    <form class="container col-4" action="index.php">
+    <form class="container col-4" action="liste-patients.php" method="POST">
 
         <div class="mb-3">
             <label for="lastName" class="form-label">Nom du patient</label>

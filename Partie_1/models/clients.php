@@ -46,9 +46,9 @@ class Clients extends DataBase
     }
 
     //ex 5
-    public function showFirstLetter()
+    public function showFirstLetter($letter)
     {
-        $query = 'SELECT `id`, `lastName`, `firstName` FROM `clients` WHERE `lastName` LIKE \'M%\' ORDER BY `lastname`';
+        $query = 'SELECT `id`, `lastName`, `firstName` FROM `clients` WHERE `lastName` LIKE  \'' . $letter . '%\' ORDER BY `lastname`';
         $queryObject = $this->dataBase->query($query);
         $result = $queryObject->fetchAll();
         return $result;
