@@ -16,6 +16,9 @@ require_once 'controllers/index_controller.php';
 
 <body>
 
+<div class="row">
+</div>
+
     <h1 class="text-center mb-5">Affichage des données</h1>
 
     <h2 class="text-center mb-5">Clients</h2>
@@ -92,7 +95,8 @@ require_once 'controllers/index_controller.php';
                 <th scope="col">ID</th>
                 <th scope="col">NOM</th>
                 <th scope="col">Prénom</th>
-                <th scope="col">Carte de fidélité</th>
+                <th scope="col">Type de carte</th>
+                <th scope="col">Numéro de carte</th>
             </tr>
         </thead>
 
@@ -103,6 +107,7 @@ require_once 'controllers/index_controller.php';
                     <td><?= $clients['id'] ?></td>
                     <td><?= $clients['lastName'] ?></td>
                     <td><?= $clients['firstName'] ?></td>
+                    <td><?= $clients['type'] ?></td>
                     <td><?= $clients['cardNumber'] ?></td>
                 </tr>
             <?php } ?>

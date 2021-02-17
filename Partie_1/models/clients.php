@@ -24,22 +24,22 @@ class Clients extends DataBase
     }
 
     //ex 3
-    public function showFirstClients()
+    public function showFirstClients($limit)
     {
-        $query = 'SELECT `id`, `lastName`, `firstName`, `card` FROM `clients` LIMIT 20';
+        $query = 'SELECT `id`, `lastName`, `firstName` FROM `clients` LIMIT ' . $limit;
         $queryObject = $this->dataBase->query($query);
         $result = $queryObject->fetchAll();
         return $result;
     }
 
     //ex 4
-    public function showCard()
+    public function showCard($type)
     {
-        $query = 'SELECT `clients`.`id`, `clients`.`lastName`, `clients`.`firstName`, `clients`.`cardNumber`, `cards`.`cardTypesId`
+        $query = 'SELECT `clients`.`id`, `clients`.`lastName`, `clients`.`firstName`, `clients`.`cardNumber`, `cardtypes`.`type`, `cards`.`cardTypesId`
         FROM `clients` 
         INNER JOIN `cards` ON `clients`.`cardNumber` = `cards`.`cardNumber`
         INNER JOIN `cardtypes` ON `cardtypes`.`id` = `cards`.`cardTypesId`
-        WHERE `cardTypesId` = 1';
+        WHERE `cardTypesId` = ' . $type;
         $queryObject = $this->dataBase->query($query);
         $result = $queryObject->fetchAll();
         return $result;

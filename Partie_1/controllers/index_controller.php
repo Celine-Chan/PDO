@@ -18,10 +18,10 @@ $showTypesObject = new ShowTypes;
 $showTypesArray = $showTypesObject->getShowTypes();
 
 //ex 3
-$showFirstClientsArray = $clientsObject->showFirstClients();
+$showFirstClientsArray = $clientsObject->showFirstClients(20);
 
 //ex 4
-$showCardArray = $clientsObject->showCard();
+$showCardArray = $clientsObject->showCard(1);
 
 //ex 5
 $showFirstLetterArray = $clientsObject->showFirstLetter();
