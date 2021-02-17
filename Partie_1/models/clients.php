@@ -24,6 +24,12 @@ class Clients extends DataBase
     }
 
     //ex 3
+    /**
+     * methode permettant d'obtenir les clients selon une limite
+     * 
+     * @param [int] $limit
+     * @return array
+     */
     public function showFirstClients($limit)
     {
         $query = 'SELECT `id`, `lastName`, `firstName` FROM `clients` LIMIT ' . $limit;
