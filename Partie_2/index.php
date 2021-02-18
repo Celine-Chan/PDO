@@ -1,7 +1,6 @@
 <?php
 
-require 'controllers/index_controller.php';
-
+require_once 'controllers/index_controller.php';
 
 ?>
 <!DOCTYPE html>
@@ -24,6 +23,7 @@ require 'controllers/index_controller.php';
         <h2>Bienvenue à l'hôpital</h2>
 
         <a class="btn btn-primary mt-3" href="views/ajout-patients.php" role="button">Création patients</a>
+        <a class="btn btn-success mt-3" href="views/liste-patients.php" role="button">Liste des patients</a>
     </div>
 
 

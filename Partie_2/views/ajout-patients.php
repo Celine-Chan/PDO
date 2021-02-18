@@ -20,14 +20,17 @@ require '../controllers/ajout-patients_controller.php';
 
     <h1 class="text-center mb-5">Création fichier patient</h1>
 
-    <form class="container col-4 shadow-lg" action="ajout-patients.php" method="POST">
+    <form class="container col-4 shadow-lg rounded" action="ajout-patients.php" method="POST">
+
+    <p class="h3 text-info"><?= $messages['addPatient'] ?? '' ?></p>
 
         <div class="mb-3">
             <label for="lastName" class="form-label">Nom du patient</label>
-            <input type="text" class="form-control" id="lastName" name="lastName" value="<?= isset($_POST['lastName']) ? $_POST['lastName'] : '' ?>">
+            <input type="text" class="form-control" id="lastName" name="lastName" value="<?= isset($_POST['lastName']) ? $_POST['lastName'] : '' ?>"> 
             <div class="text-danger">
                 <!-- message d'erreur si pas validé -->
                 <span><?= isset($errorMessages['lastName']) ? $errorMessages['lastName'] : '' ?></span>
+                <!-- ou : $errorMessages['lastName] ?? '' -->
             </div>
         </div>
 
@@ -69,7 +72,8 @@ require '../controllers/ajout-patients_controller.php';
 
         <button type="submit" class="btn btn-primary" name="submit">Envoyer</button>
 
-        <a class="btn btn-danger" href="../index.php" role="button">Retour index</a>
+        <a class="btn btn-danger" href="../index.php" role="button">Accueil</a>
+        <a class="btn btn-success" href="liste-patients.php" role="button">Liste des patients</a>
 
     </form>
 
