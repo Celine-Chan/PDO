@@ -1,6 +1,6 @@
 <?php
 
-require_once '../controllers/index_controller.php';
+require_once '../controllers/list-patients_controller.php';
 
 ?>
 
@@ -20,33 +20,38 @@ require_once '../controllers/index_controller.php';
 
     <h1 class="text-center">Liste des patients</h1>
 
-    <table class="table table-striped table-dark container text-center mt-5">
+    <form action="detailsPatient.php" method="POST">
+        <table class="table table-striped table-dark container text-center mt-5">
 
-        <thead>
-            <tr>
-                <th scope="col">NOM</th>
-                <th scope="col">Prénom</th>
-                <th scope="col">Date de naissance</th>
-                <th scope="col">Numéro de téléphone</th>
-                <th scope="col">Email</th>
-            </tr>
-        </thead>
-
-        <tbody>
-            <!-- je fais un foreach pour parcourir le tableau -->
-            <?php foreach ($listPatientsArray as $patients) { ?>
-                <tr>                   
-                    <td><?= $patients['lastname'] ?></td>
-                    <td><?= $patients['firstname'] ?></td>
-                    <td><?= $patients['birthdate'] ?></td>
-                    <td><?= $patients['phone'] ?></td>
-                    <td><?= $patients['mail'] ?></td>
+            <thead>
+                <tr>
+                    <th scope="col">N°</th>
+                    <th scope="col">NOM</th>
+                    <th scope="col">Prénom</th>
+                    <th scope="col"></th>
                 </tr>
-            <?php } ?>
-        </tbody>
+            </thead>
 
+            <tbody>
+                <!-- je fais un foreach pour parcourir le tableau -->
+                <?php foreach ($listPatientsArray as $patients) { ?>
+                    <tr>
+                        <td><?= $patients['id'] ?></td>
+                        <td><?= $patients['lastname'] ?></td>
+                        <td><?= $patients['firstname'] ?></td>
+                        <td>
+                            <button type="submit" class="btn btn-outline-light btn-sm" name="idPatient" value="<?= $patients['id'] ?>">+ d'infos</button>
+                            <button type="button" class="btn btn-danger btn-sm"><i class="far fa-trash-alt"></i></button>
+                        </td>
+                    </tr>
+                <?php } ?>
+            </tbody>
 
-    </table>
+        </table>
+    </form>
+
+    <!-- Mise en place d'une ternaire pour permettre d'afficher un message si jamais le tableau est vide -->
+    <?= count($listPatientsArray) == 0 ? '<p class="h6 text-center">Vous n\'avez pas de patients d\'enregistrés<p>' : '' ?>
 
     <div class="text-center mt-5">
         <a class="btn btn-primary mt-3" href="../views/ajout-patients.php" role="button">Création patients</a>

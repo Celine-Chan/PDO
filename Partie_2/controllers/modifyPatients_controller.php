@@ -1,22 +1,34 @@
 <?php
+session_start();
 
 require_once '../models/database.php';
 require_once '../models/patients.php';
-
-// var_dump($_POST);
-
-// mise en place d'une variable permettant de savoir si nous avons inscrit le patient dans la base
-$addPatientInBase = false;
-
-$errorMessages = [];
-
-$messages = [];
 
 $regexName = '/^[a-zA-Z]+$/';
 $regexBirthDate = '/^\d{4}(-)(((0)[0-9])|((1)[0-2]))(-)([0-2][0-9]|(3)[0-1])$/';
 $regexPhoneNumber = '/^0[1-68]([-. ]?[0-9]{2}){4}+$/';
 
-if (isset($_POST['addPatientBtn'])) {
+//mise en place d'une variable permettant de savoir si nous avons inscrit le patient dans la base
+$updatePatientInBase = false;
+
+//mise e place d'un tableau d'erreurs
+$errors = [];
+
+//mise en place d'un tableau de message
+$messages = [];
+
+//nous testons si nous avons bien une valeur non NULL dans le $_POST modifyPatient qui signifie que nous venons bien de la page detailsPatient
+if (!empty($_POST['modifyPatient'])) {
+    //création d'un nouvel objet
+    $patientObj = new Patients;
+    //nous allons récupérer les infos de notre patient nous permettant de pré-remplir le formulaire
+    $detailsPatientArray = $patientObj->getDetailsPatient($_POST['modifyPatient']);
+    //pour plus de sécurité, je stockl'id du patient à modifier dan sune variable de session
+    $_SESSION['idPatientToUpdate'] = $detailsPatientArray['id'];
+}
+
+
+if (isset($_POST['updatePatientBtn'])) {
 
     if (isset($_POST['lastName'])) {
         if (!preg_match($regexName, $_POST['lastName'])) {
@@ -65,28 +77,33 @@ if (isset($_POST['addPatientBtn'])) {
         if (empty($_POST['email'])) {
             $errorMessages['email'] = 'Veuillez saisir une adresse email.';
         }
+
     }
 
-    var_dump($errorMessages);
+    // var_dump($_POST);
 
+    // var_dump($errors);
     //je vérifie s'il n'y a pas d'erreurs afin de lancer ma requête
-    if (empty($errorMessages)) {
-        $patientsObj = new Patients;
+    if (empty($errors)) {
+        $patientObj = new Patients;
 
-        //création d'un tableau associatif contenant toutes les infos du form
+        //création d'un tableau contenant toute les infos du form
         $patientsDetails = [
-            'lastName' => htmlspecialchars($_POST['lastName']),
-            'firstName' => htmlspecialchars($_POST['firstName']),
-            'birthDate' => htmlspecialchars($_POST['birthDate']),
-            'phoneNumber' => htmlspecialchars($_POST['phoneNumber']),
-            'email' => htmlspecialchars($_POST['email'])
+            'lastName' => htmlspecialchars($_POST['lastname']),
+            'firstName' => htmlspecialchars($_POST['firstname']),
+            'birthDate' => htmlspecialchars($_POST['birthdate']),
+            'phoneNumber' => htmlspecialchars($_POST['phone']),
+            'email' => htmlspecialchars($_POST['mail']),
+            //je récupère mon id que j'ai stocké dans ma variable de session
+            'id' => $_SESSION['idPatientToUpdate']
         ];
 
-        if ($patientsObj->addPatient($patientsDetails)) {
-            $addPatientInBase = true;
-            $messages['addPatient'] = 'Patient enregistré';
+        if ($patientObj->updatePatient($patientsDetails)) {
+            $updatePatientInBase = true;
         } else {
-            $messages['addPatient'] = 'Erreur de connexion lors de l\'enregistrement';
+            $messages['updatepatient'] = 'Erreur de connexion lors de la modification';
+            
         }
+        
     }
 }
